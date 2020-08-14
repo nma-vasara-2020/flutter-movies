@@ -6,23 +6,14 @@ import 'package:movies/ui/widgets/error_indicator.dart';
 import 'package:movies/ui/widgets/loading_indicator.dart';
 import 'package:movies/ui/widgets/movies_list.dart';
 
-class DiscoverMoviesTab extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return DiscoverMoviesTabState();
-  }
-}
-
 // App state https://flutter.dev/docs/development/ui/interactive
-class DiscoverMoviesTabState extends State<DiscoverMoviesTab> {
+class DiscoverMoviesTab extends StatelessWidget {
   static final _allGenresItem = Genre(null, "All genres");
   Genre _selectedGenre = _allGenresItem;
   final _moviesApiService = MoviesApiService();
 
   onGenreChanged(Genre genre) {
-    setState(() {
-      _selectedGenre = genre;
-    });
+    // TODO Task 5
   }
 
   @override
