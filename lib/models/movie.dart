@@ -8,14 +8,20 @@ part 'movie.g.dart';
 // https://flutter.dev/docs/development/data-and-backend/json
 @JsonSerializable()
 class Movie {
+  @JsonKey(disallowNullValue: true)
   final int id;
 
+  @JsonKey(disallowNullValue: true)
   final String title;
 
+  @JsonKey(disallowNullValue: true)
   final String overview;
 
-  @JsonKey(name: 'original_title')
+  @JsonKey(name: 'original_title', disallowNullValue: true)
   final String originalTitle;
+
+  @JsonKey(name: 'original_language', disallowNullValue: true)
+  final String originalLanguage;
 
   @JsonKey(name: 'poster_path')
   final String posterPath;
@@ -23,19 +29,16 @@ class Movie {
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
 
-  @JsonKey(name: 'vote_average')
+  @JsonKey(name: 'vote_average', disallowNullValue: true)
   final double voteAverage;
 
-  @JsonKey(name: 'original_language')
-  final String originalLanguage;
-
-  @JsonKey(name: 'genre_ids')
+  @JsonKey(name: 'genre_ids', disallowNullValue: true)
   final List<int> genreIds;
 
-  @JsonKey(name: 'release_date')
+  @JsonKey(name: 'release_date', disallowNullValue: true)
   final String releaseDate;
 
-  @JsonKey(name: 'video')
+  @JsonKey(name: 'video', disallowNullValue: true)
   final bool hasVideo;
 
   String get posterUrl =>
@@ -44,6 +47,8 @@ class Movie {
   String get backdropUrl => backdropPath != null
       ? "https://image.tmdb.org/t/p/w780$backdropPath"
       : null;
+
+  String get webUrl => "https://www.themoviedb.org/movie/$id";
 
   List<Genre> get genres =>
       Constants.GENRES.where((g) => genreIds.contains(g.id)).toList();
