@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movies/constants.dart';
 
 import 'genre.dart';
 
@@ -51,7 +50,7 @@ class Movie {
   String get webUrl => "https://www.themoviedb.org/movie/$id";
 
   List<Genre> get genres =>
-      Constants.GENRES.where((g) => genreIds.contains(g.id)).toList();
+      Genre.GENRES.where((g) => genreIds.contains(g.id)).toList();
 
   const Movie(
     this.id,

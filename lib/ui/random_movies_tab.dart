@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
-import 'package:movies/constants.dart';
 import 'package:movies/models/genre.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/ui/widgets/error_indicator.dart';
@@ -42,7 +41,7 @@ class RandomMoviesTabState extends State<RandomMoviesTab> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: DropdownButton<Genre>(
-                items: [_allGenresItem, ...Constants.GENRES]
+                items: [_allGenresItem, ...Genre.GENRES]
                     .map(
                       (genre) => DropdownMenuItem<Genre>(
                         value: genre,
