@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
+import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
 import 'package:share/share.dart';
 
@@ -34,7 +35,10 @@ class MovieDetailsPage extends StatelessWidget {
               movie: movie,
             ),
           ),
-          SliverToBoxAdapter(child: SimilarMoviesHeadline()),
+          SliverToBoxAdapter(child: MovieDetailsHeadline(text: "Actors")),
+          MovieActorsWidget(movieId: movie.id),
+          SliverToBoxAdapter(
+              child: MovieDetailsHeadline(text: "Similar movies")),
           SimilarMoviesWidget(movieId: movie.id),
         ],
       ),
@@ -117,12 +121,9 @@ class MovieDetailsBody extends StatelessWidget {
             movie.genres.map((g) => g.name).join(' / '),
             style: TextStyle(fontSize: 16),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: Text(
-              "Overview",
-              style: Theme.of(context).textTheme.headline5,
-            ),
+          MovieDetailsHeadline(
+            text: "Overview",
+            leftPadding: 0,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
@@ -137,13 +138,68 @@ class MovieDetailsBody extends StatelessWidget {
   }
 }
 
-class SimilarMoviesHeadline extends StatelessWidget {
+class MovieActorsWidget extends StatelessWidget {
+  final int movieId;
+
+  const MovieActorsWidget({Key key, @required this.movieId})
+      : assert(movieId != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: MoviesApiService().getMovieActors(movieId),
+      builder: (BuildContext context, AsyncSnapshot<List<Actor>> snapshot) {
+        if (snapshot.hasError) {
+          return SliverToBoxAdapter(
+            child: ErrorIndicator(error: snapshot.error),
+          );
+        } else if (snapshot.hasData) {
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final actor = snapshot.data[index];
+                return ListTile(
+                  title: Text(actor.name),
+                  subtitle: Text(actor.character),
+                  leading: actor.profileUrl != null
+                      ? AspectRatio(
+                          aspectRatio: 1,
+                          child: Image.network(
+                            actor.profileUrl,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : Image.asset("assets/person.jpg"),
+                );
+              },
+              childCount: snapshot.data.length,
+            ),
+          );
+        }
+        return SliverToBoxAdapter(
+          child: LoadingIndicator(),
+        );
+      },
+    );
+  }
+}
+
+class MovieDetailsHeadline extends StatelessWidget {
+  final String text;
+  final double leftPadding;
+
+  const MovieDetailsHeadline(
+      {Key key, @required this.text, this.leftPadding = 16.0})
+      : assert(text != null),
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+      padding: EdgeInsets.only(top: 16, left: this.leftPadding, right: 16),
       child: Text(
-        "Similar movies",
+        text,
         style: Theme.of(context).textTheme.headline5,
       ),
     );

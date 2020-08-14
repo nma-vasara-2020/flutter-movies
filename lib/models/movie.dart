@@ -7,19 +7,19 @@ part 'movie.g.dart';
 // https://flutter.dev/docs/development/data-and-backend/json
 @JsonSerializable()
 class Movie {
-  @JsonKey(disallowNullValue: true)
+  @JsonKey()
   final int id;
 
-  @JsonKey(disallowNullValue: true)
+  @JsonKey()
   final String title;
 
-  @JsonKey(disallowNullValue: true)
+  @JsonKey()
   final String overview;
 
-  @JsonKey(name: 'original_title', disallowNullValue: true)
+  @JsonKey(name: 'original_title')
   final String originalTitle;
 
-  @JsonKey(name: 'original_language', disallowNullValue: true)
+  @JsonKey(name: 'original_language')
   final String originalLanguage;
 
   @JsonKey(name: 'poster_path')
@@ -28,24 +28,31 @@ class Movie {
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
 
-  @JsonKey(name: 'vote_average', disallowNullValue: true)
+  @JsonKey(name: 'vote_average')
   final double voteAverage;
 
-  @JsonKey(name: 'genre_ids', disallowNullValue: true)
+  @JsonKey(name: 'genre_ids')
   final List<int> genreIds;
 
-  @JsonKey(name: 'release_date', disallowNullValue: true)
+  @JsonKey(name: 'release_date')
   final String releaseDate;
 
-  @JsonKey(name: 'video', disallowNullValue: true)
+  @JsonKey(name: 'video')
   final bool hasVideo;
 
-  String get posterUrl =>
-      posterPath != null ? "https://image.tmdb.org/t/p/w500$posterPath" : null;
+  String get posterUrl {
+    if (posterPath == null) {
+      return null;
+    }
+    return "https://image.tmdb.org/t/p/w500$posterPath";
+  }
 
-  String get backdropUrl => backdropPath != null
-      ? "https://image.tmdb.org/t/p/w780$backdropPath"
-      : null;
+  String get backdropUrl {
+    if (backdropPath == null) {
+      return null;
+    }
+    return "https://image.tmdb.org/t/p/w780$backdropPath";
+  }
 
   String get webUrl => "https://www.themoviedb.org/movie/$id";
 

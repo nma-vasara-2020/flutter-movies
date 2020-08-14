@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
+import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
 
 class MoviesApiService {
@@ -86,6 +87,20 @@ class MoviesApiService {
   List<Movie> _parseMoviesFromResponse(Response response) {
     return response.data['results']
         .map<Movie>((model) => Movie.fromJson(model))
+        .toList(growable: false);
+  }
+
+
+  Future<List<Actor>> getMovieActors(int movieId) async {
+    final response = await _dio.get(
+      "/movie/$movieId/credits",
+      queryParameters: {
+        'api_key': _apiKey,
+      },
+    );
+
+    return response.data['cast']
+        .map<Actor>((model) => Actor.fromJson(model))
         .toList(growable: false);
   }
 }
