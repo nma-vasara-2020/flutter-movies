@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
 import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
-import 'package:share/share.dart';
 
 import 'widgets/error_indicator.dart';
 import 'widgets/loading_indicator.dart';
@@ -59,7 +58,7 @@ class MovieDetailsPage extends StatelessWidget {
   }
 
   _shareMovie() {
-    Share.share('${movie.title} ${movie.webUrl}');
+    // TODO Task 8
   }
 }
 
