@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutTab extends StatelessWidget {
+class AboutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("About NMA"),
+      ),
+      body: Container(child: AboutPageBody()),
+    );
+  }
+}
+
+class AboutPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,9 +48,9 @@ class AboutTab extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
-                onPressed: () => launch("https://www.facebook.com/nmakademija"),
-                child: Text("Facebook")
-              ),
+                  onPressed: () =>
+                      launch("https://www.facebook.com/nmakademija"),
+                  child: Text("Facebook")),
             ),
           ],
         ),

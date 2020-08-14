@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies/routes.dart';
 
-import 'tabs/about_tab.dart';
+import 'tabs/movies_in_theater_tab.dart';
 import 'tabs/popular_movies_tab.dart';
 import 'tabs/random_movies_tab.dart';
 
@@ -18,6 +19,17 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text("Movies"),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.help),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                Routes.ROUTE_ABOUT,
+              );
+            },
+          ),
+        ],
       ),
       body: getTabBody(),
       bottomNavigationBar: BottomNavigationBar(
@@ -26,15 +38,15 @@ class _MainPageState extends State<MainPage> {
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.explore),
-            title: Text('Discover'),
+            title: Text('DISCOVER'),
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.movie),
-            title: Text('Popular'),
+            title: Text('POPULAR'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.help),
-            title: Text('About'),
+            icon: new Icon(Icons.local_movies),
+            title: Text('IN THEATER'),
           ),
         ],
       ),
@@ -48,7 +60,7 @@ class _MainPageState extends State<MainPage> {
       case 1:
         return PopularMoviesTab();
       case 2:
-        return AboutTab();
+        return MoviesInTheaterTab();
       default:
         throw ArgumentError("Tab with index $_currentIndex doesn't exist");
     }
