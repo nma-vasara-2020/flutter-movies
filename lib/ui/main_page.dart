@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.help),
+            icon: Icon(Icons.help_outline),
             onPressed: () {
               Navigator.pushNamed(
                 context,
