@@ -1,4 +1,4 @@
-name: Movies
+name: movies
 description: Application for teaching NMA sutdents
 
 # The following line prevents the package from being accidentally published to
