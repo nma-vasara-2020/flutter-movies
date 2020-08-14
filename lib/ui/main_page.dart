@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'about_tab.dart';
-import 'popular_movies_tab.dart';
-import 'random_movies_tab.dart';
+import 'tabs/about_tab.dart';
+import 'tabs/popular_movies_tab.dart';
+import 'tabs/random_movies_tab.dart';
 
 class MainPage extends StatefulWidget {
   @override

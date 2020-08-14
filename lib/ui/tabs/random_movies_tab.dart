@@ -4,7 +4,7 @@ import 'package:movies/models/genre.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/ui/widgets/error_indicator.dart';
 import 'package:movies/ui/widgets/loading_indicator.dart';
-import 'package:movies/ui/popular_movies_tab.dart';
+import 'package:movies/ui/tabs/popular_movies_tab.dart';
 
 class RandomMoviesTab extends StatefulWidget {
   @override
