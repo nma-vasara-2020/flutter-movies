@@ -30,7 +30,7 @@ class RandomMoviesTabState extends State<RandomMoviesTab> {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => onGenreChanged(_selectedGenre),
-        label: Text("Discover movies"),
+        label: Text("SUPRISE ME"),
         icon: Icon(Icons.explore),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

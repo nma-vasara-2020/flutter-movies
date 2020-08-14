@@ -44,7 +44,7 @@ class MovieDetailsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _shareMovie,
-        label: Text("Share"),
+        label: Text("SHARE"),
         icon: Icon(
           Icons.share,
         ),
