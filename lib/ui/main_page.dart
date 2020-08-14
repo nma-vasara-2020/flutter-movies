@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(getTabText()),
+        title: Text("Hello world"),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -51,19 +51,6 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
     );
-  }
-
-  String getTabText() {
-    switch (_currentIndex) {
-      case 0:
-        return "Discover movies";
-      case 1:
-        return "Popular movies";
-      case 2:
-        return "Movies in theatres";
-      default:
-        throw ArgumentError("Tab text with index $_currentIndex doesn't exist");
-    }
   }
 
   Widget getTabBody() {
