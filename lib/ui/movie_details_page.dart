@@ -277,9 +277,13 @@ class SimilarMoviesWidget extends StatelessWidget {
         } else if (snapshot.hasData) {
           return SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => MoviesListViewCell(
-                movie: snapshot.data[index],
-              ),
+              (context, index) {
+                final movie = snapshot.data[index];
+
+                return MoviesListViewCell(
+                  movie: movie,
+                );
+              },
               childCount: snapshot.data.length,
             ),
           );
