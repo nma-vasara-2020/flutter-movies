@@ -29,13 +29,13 @@ class MovieDetailsPage extends StatelessWidget {
               ),
             ),
           ),
-          SliverFillRemaining(
-            fillOverscroll: true,
-            hasScrollBody: false,
+          SliverToBoxAdapter(
             child: MovieDetailsBody(
               movie: movie,
             ),
           ),
+          SliverToBoxAdapter(child: SimilarMoviesHeadline()),
+          SimilarMoviesWidget(movieId: movie.id),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -131,33 +131,55 @@ class MovieDetailsBody extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: Text(
-              "Similar movies",
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ),
-          FutureBuilder(
-            future: MoviesApiService().getSimilarMovies(movie.id),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
-              if (snapshot.hasError) {
-                return ErrorIndicator(error: snapshot.error);
-              } else if (snapshot.connectionState == ConnectionState.done &&
-                  snapshot.hasData) {
-                return Column(
-                  children: snapshot.data
-                      .map((e) => MoviesListViewCell(movie: e))
-                      .toList(),
-                );
-              }
-
-              return LoadingIndicator();
-            },
-          )
         ],
       ),
+    );
+  }
+}
+
+class SimilarMoviesHeadline extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+      child: Text(
+        "Similar movies",
+        style: Theme.of(context).textTheme.headline5,
+      ),
+    );
+  }
+}
+
+class SimilarMoviesWidget extends StatelessWidget {
+  final int movieId;
+
+  const SimilarMoviesWidget({Key key, @required this.movieId})
+      : assert(movieId != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: MoviesApiService().getSimilarMovies(movieId),
+      builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
+        if (snapshot.hasError) {
+          return SliverToBoxAdapter(
+            child: ErrorIndicator(error: snapshot.error),
+          );
+        } else if (snapshot.hasData) {
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => MoviesListViewCell(
+                movie: snapshot.data[index],
+              ),
+              childCount: snapshot.data.length,
+            ),
+          );
+        }
+        return SliverToBoxAdapter(
+          child: LoadingIndicator(),
+        );
+      },
     );
   }
 }

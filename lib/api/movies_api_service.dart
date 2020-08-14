@@ -31,7 +31,7 @@ class MoviesApiService {
       },
     );
 
-    return _parseMoviesFromResponse(response.data);
+    return _parseMoviesFromResponse(response);
   }
 
   // https://developers.themoviedb.org/3/discover/movie-discover
@@ -64,7 +64,7 @@ class MoviesApiService {
     final randomPageResponse =
         await _getRandomMoviesResponse(genreId, random.nextInt(totalPages));
 
-    final movies = _parseMoviesFromResponse(randomPageResponse.data);
+    final movies = _parseMoviesFromResponse(randomPageResponse);
 
     // Some movies don't have backdrops, put them at the end
     movies.sort((a, b) => a.backdropUrl == null ? 1 : 0);
@@ -80,11 +80,11 @@ class MoviesApiService {
       },
     );
 
-    return _parseMoviesFromResponse(response.data).take(3).toList();
+    return _parseMoviesFromResponse(response);
   }
 
-  List<Movie> _parseMoviesFromResponse(dynamic responseData) {
-    return responseData['results']
+  List<Movie> _parseMoviesFromResponse(Response response) {
+    return response.data['results']
         .map<Movie>((model) => Movie.fromJson(model))
         .toList(growable: false);
   }
