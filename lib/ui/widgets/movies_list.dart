@@ -61,11 +61,7 @@ class MoviesListViewCell extends StatelessWidget {
   }
 
   _launchMovieDetailsScreen(BuildContext context) {
-    Navigator.pushNamed(
-      context,
-      Routes.ROUTE_MOVIE_DETAILS,
-      arguments: movie,
-    );
+    // TODO Task 3
   }
 }
 
