@@ -31,14 +31,20 @@ class MovieDetailsPage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: MovieDetailsMainInformation(
+            child: MovieDetailsInformation(
+              movie: movie,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: MovieDetailsOverview(
               movie: movie,
             ),
           ),
           SliverToBoxAdapter(child: MovieDetailsHeadline(text: "Actors")),
           MovieActorsWidget(movieId: movie.id),
           SliverToBoxAdapter(
-              child: MovieDetailsHeadline(text: "Similar movies")),
+            child: MovieDetailsHeadline(text: "Similar movies"),
+          ),
           SimilarMoviesWidget(movieId: movie.id),
         ],
       ),
@@ -103,10 +109,10 @@ class MovieDetailsHeaderTitle extends StatelessWidget {
   }
 }
 
-class MovieDetailsMainInformation extends StatelessWidget {
+class MovieDetailsInformation extends StatelessWidget {
   final Movie movie;
 
-  const MovieDetailsMainInformation({Key key, @required this.movie})
+  const MovieDetailsInformation({Key key, @required this.movie})
       : assert(movie != null),
         super(key: key);
 
@@ -153,19 +159,35 @@ class MovieDetailsMainInformation extends StatelessWidget {
               ),
             ),
           ]),
-          MovieDetailsHeadline(
-            text: "Overview",
-            leftPadding: 0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              movie.overview,
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
         ],
       ),
+    );
+  }
+}
+
+class MovieDetailsOverview extends StatelessWidget {
+  final Movie movie;
+
+  const MovieDetailsOverview({Key key, @required this.movie})
+      : assert(movie != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        MovieDetailsHeadline(
+          text: "Overview",
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            movie.overview,
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -219,17 +241,15 @@ class MovieActorsWidget extends StatelessWidget {
 
 class MovieDetailsHeadline extends StatelessWidget {
   final String text;
-  final double leftPadding;
 
-  const MovieDetailsHeadline(
-      {Key key, @required this.text, this.leftPadding = 16.0})
+  const MovieDetailsHeadline({Key key, @required this.text})
       : assert(text != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 16, left: this.leftPadding, right: 16),
+      padding: EdgeInsets.only(left: 16, right: 16),
       child: Text(
         text,
         style: Theme.of(context).textTheme.headline5,
