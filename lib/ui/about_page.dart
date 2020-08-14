@@ -20,11 +20,8 @@ class AboutPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Task 2
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("TODO: Task 2"),
-      ],
+    return Center(
+      child: Text("TODO: Task 2"),
     );
   }
 

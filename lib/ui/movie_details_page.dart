@@ -118,48 +118,11 @@ class MovieDetailsInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Task 7
     return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      "Genres: " + movie.genres.map((g) => g.name).join(' / '),
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                  Text(
-                    "Release date: ${movie.releaseDate}",
-                    style: TextStyle(fontSize: 16),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 4.0),
-              child: Icon(
-                Icons.stars,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Text(
-                movie.voteAverage.toString(),
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ]),
-        ],
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Text("TODO Task 7"),
       ),
     );
   }
