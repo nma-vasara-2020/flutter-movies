@@ -163,41 +163,11 @@ class MovieActorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: MoviesApiService().getMovieActors(movieId),
-      builder: (BuildContext context, AsyncSnapshot<List<Actor>> snapshot) {
-        if (snapshot.hasError) {
-          return SliverToBoxAdapter(
-            child: ErrorIndicator(error: snapshot.error),
-          );
-        } else if (snapshot.hasData) {
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final actor = snapshot.data[index];
-                return ListTile(
-                  title: Text(actor.name),
-                  subtitle: Text(actor.character),
-                  leading: actor.profileUrl != null
-                      ? AspectRatio(
-                          aspectRatio: 1,
-                          child: Image.network(
-                            actor.profileUrl,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      : Image.asset("assets/person.jpg"),
-                );
-              },
-              childCount: snapshot.data.length,
-            ),
-          );
-        }
-        return SliverToBoxAdapter(
-          child: LoadingIndicator(),
-        );
-      },
-    );
+    return SliverToBoxAdapter(
+        child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(child: Text("TODO 10")),
+    ));
   }
 }
 
