@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/routes.dart';
-
-import '../widgets/error_indicator.dart';
-import '../widgets/loading_indicator.dart';
+import 'package:movies/ui/widgets/error_indicator.dart';
+import 'package:movies/ui/widgets/loading_indicator.dart';
 
 class PopularMoviesTab extends StatelessWidget {
   @override

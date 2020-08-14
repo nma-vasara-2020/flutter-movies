@@ -3,7 +3,7 @@ import 'package:movies/routes.dart';
 
 import 'tabs/movies_in_theater_tab.dart';
 import 'tabs/popular_movies_tab.dart';
-import 'tabs/random_movies_tab.dart';
+import 'tabs/discover_movies_tab.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
   Widget getTabBody() {
     switch (_currentIndex) {
       case 0:
-        return RandomMoviesTab();
+        return DiscoverMoviesTab();
       case 1:
         return PopularMoviesTab();
       case 2:

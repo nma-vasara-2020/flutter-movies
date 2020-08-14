@@ -6,15 +6,15 @@ import 'package:movies/ui/widgets/error_indicator.dart';
 import 'package:movies/ui/widgets/loading_indicator.dart';
 import 'package:movies/ui/tabs/popular_movies_tab.dart';
 
-class RandomMoviesTab extends StatefulWidget {
+class DiscoverMoviesTab extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return RandomMoviesTabState();
+    return DiscoverMoviesTabState();
   }
 }
 
 // App state https://flutter.dev/docs/development/ui/interactive
-class RandomMoviesTabState extends State<RandomMoviesTab> {
+class DiscoverMoviesTabState extends State<DiscoverMoviesTab> {
   static final _allGenresItem = Genre(null, "All genres");
   Genre _selectedGenre = _allGenresItem;
   final _moviesApiService = MoviesApiService();
