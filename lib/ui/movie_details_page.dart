@@ -31,7 +31,7 @@ class MovieDetailsPage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: MovieDetailsBody(
+            child: MovieDetailsMainInformation(
               movie: movie,
             ),
           ),
@@ -103,10 +103,10 @@ class MovieDetailsHeaderTitle extends StatelessWidget {
   }
 }
 
-class MovieDetailsBody extends StatelessWidget {
+class MovieDetailsMainInformation extends StatelessWidget {
   final Movie movie;
 
-  const MovieDetailsBody({Key key, @required this.movie})
+  const MovieDetailsMainInformation({Key key, @required this.movie})
       : assert(movie != null),
         super(key: key);
 
@@ -117,10 +117,43 @@ class MovieDetailsBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            movie.genres.map((g) => g.name).join(' / '),
-            style: TextStyle(fontSize: 16),
-          ),
+          Row(children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      "Genres: " + movie.genres.map((g) => g.name).join(' / '),
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  Text(
+                    "Release date: ${movie.releaseDate}",
+                    style: TextStyle(fontSize: 16),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 4.0),
+              child: Icon(
+                Icons.stars,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                movie.voteAverage.toString(),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ]),
           MovieDetailsHeadline(
             text: "Overview",
             leftPadding: 0,
