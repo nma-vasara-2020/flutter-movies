@@ -38,11 +38,7 @@ class MoviesListViewCell extends StatelessWidget {
     return Container(
       height: 300,
       child: InkWell(
-        onTap: () => Navigator.pushNamed(
-          context,
-          Routes.ROUTE_MOVIE_DETAILS,
-          arguments: movie,
-        ),
+        onTap: () => _launchMovieDetailsScreen(context),
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: ClipRRect(
@@ -61,6 +57,14 @@ class MoviesListViewCell extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _launchMovieDetailsScreen(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      Routes.ROUTE_MOVIE_DETAILS,
+      arguments: movie,
     );
   }
 }
