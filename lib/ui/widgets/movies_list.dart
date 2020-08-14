@@ -78,15 +78,7 @@ class MovieCoverImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (movie.backdropUrl != null) {
-      return Hero(
-        tag: "movie-backdrop-${movie.id}",
-        child: Image.network(
-          movie.backdropUrl,
-          fit: BoxFit.cover,
-        ),
-      );
-    }
+    // TODO Task 3
     return Container(color: Colors.blue);
   }
 }
