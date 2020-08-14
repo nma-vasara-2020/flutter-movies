@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
 import 'package:movies/models/movie.dart';
+import 'package:share/share.dart';
 
 import 'popular_movies_tab.dart';
 import 'widgets/error_indicator.dart';
@@ -37,13 +38,18 @@ class MovieDetailsPage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => null,
-        child: Icon(
-          Icons.favorite,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _shareMovie,
+        label: Text("Share"),
+        icon: Icon(
+          Icons.share,
         ),
       ),
     );
+  }
+
+  _shareMovie() {
+    Share.share('${movie.title} ${movie.webUrl}');
   }
 }
 
