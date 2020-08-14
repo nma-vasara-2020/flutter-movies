@@ -4,9 +4,9 @@ import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
 import 'package:share/share.dart';
 
-import 'tabs/popular_movies_tab.dart';
 import 'widgets/error_indicator.dart';
 import 'widgets/loading_indicator.dart';
+import 'widgets/movies_list.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   final Movie movie;

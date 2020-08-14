@@ -3,8 +3,8 @@ import 'package:movies/api/movies_api_service.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/ui/widgets/error_indicator.dart';
 import 'package:movies/ui/widgets/loading_indicator.dart';
+import 'package:movies/ui/widgets/movies_list.dart';
 
-import 'popular_movies_tab.dart';
 
 class MoviesInTheaterTab extends StatelessWidget {
   @override
