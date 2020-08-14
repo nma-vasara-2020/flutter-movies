@@ -12,6 +12,7 @@ class MoviesApiService {
 
   MoviesApiService._internal();
 
+  // API documentation https://developers.themoviedb.org/3/getting-started/introduction
   static const _baseApiUrl = "https://api.themoviedb.org/3/";
   static const _apiKey = "e9b7754fbc9d5203fdaa684d12a447e8";
 
@@ -50,7 +51,6 @@ class MoviesApiService {
         'page': page,
       },
     );
-    print(response.realUri);
 
     return response;
   }
