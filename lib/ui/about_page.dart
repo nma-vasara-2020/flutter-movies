@@ -14,6 +14,9 @@ class AboutPage extends StatelessWidget {
 }
 
 class AboutPageBody extends StatelessWidget {
+  static const NMA_WEBSITE_URL = "https://www.nmakademija.lt/eng/";
+  static const NMA_FACEBOOK_URL = "https://www.facebook.com/nmakademija/";
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +43,7 @@ class AboutPageBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton.icon(
-                onPressed: () => launch("https://www.nmakademija.lt/eng/"),
+                onPressed: _launchWebsite,
                 icon: Icon(Icons.public),
                 label: Text("Website"),
               ),
@@ -48,13 +51,30 @@ class AboutPageBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
-                  onPressed: () =>
-                      launch("https://www.facebook.com/nmakademija"),
-                  child: Text("Facebook")),
+                onPressed: _launchFacebook,
+                child: Text("Facebook"),
+              ),
             ),
           ],
         ),
       ],
     );
+  }
+
+  Future<bool> _launchWebsite() async {
+    return await _launchURL(NMA_WEBSITE_URL);
+  }
+
+  Future<bool> _launchFacebook() async {
+    return await _launchURL(NMA_FACEBOOK_URL);
+  }
+
+  // https://pub.dev/packages/url_launcher
+  Future<bool> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      return await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
