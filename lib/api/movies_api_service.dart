@@ -76,7 +76,7 @@ class MoviesApiService {
     final random = Random();
 
     final randomPageResponse =
-        await _getRandomMoviesResponse(genreId, random.nextInt(totalPages));
+        await _getRandomMoviesResponse(genreId, random.nextInt(totalPages) + 1);
 
     final movies = _parseMoviesFromResponse(randomPageResponse);
 
