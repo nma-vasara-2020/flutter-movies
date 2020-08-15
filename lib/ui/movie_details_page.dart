@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
-import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
 
 import 'widgets/error_indicator.dart';
