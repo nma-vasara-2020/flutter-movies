@@ -68,6 +68,7 @@ class MoviesApiService {
     return response;
   }
 
+  // https://developers.themoviedb.org/3/discover/movie-discover
   Future<List<Movie>> getRandomMovies(int genreId) async {
     final response = await _getRandomMoviesResponse(genreId, 1);
 
@@ -85,6 +86,7 @@ class MoviesApiService {
     return movies;
   }
 
+  // https://developers.themoviedb.org/3/movies/get-similar-movies
   Future<List<Movie>> getSimilarMovies(int movieId) async {
     final response = await _dio.get(
       "/movie/$movieId/similar",
@@ -102,7 +104,7 @@ class MoviesApiService {
         .toList(growable: false);
   }
 
-
+  // https://developers.themoviedb.org/3/movies/get-movie-credits
   Future<List<Actor>> getMovieActors(int movieId) async {
     final response = await _dio.get(
       "/movie/$movieId/credits",
