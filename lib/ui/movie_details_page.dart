@@ -12,7 +12,7 @@ class MovieDetailsPage extends StatelessWidget {
   final Movie movie;
 
   const MovieDetailsPage({Key key, @required this.movie})
-      : assert(movie != null),
+      : assert(movie != null, "Please pass a movie as an argument"),
         super(key: key);
 
   @override
