@@ -37,16 +37,6 @@ class MoviesApiService {
 
   // TODO Task 10
   // https://developers.themoviedb.org/3/movies/get-now-playing
-  Future<List<Movie>> getCurrentPlayingMovies() async {
-    final response = await _dio.get(
-      "/movie/now_playing/",
-      queryParameters: {
-        'api_key': _apiKey,
-      },
-    );
-
-    return _parseMoviesFromResponse(response);
-  }
 
   // https://developers.themoviedb.org/3/discover/movie-discover
   Future<Response> _getRandomMoviesResponse(int genreId, int page) async {

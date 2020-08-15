@@ -16,8 +16,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // TODO Task 1
-        // TODO Task 4
+        // TODO: Task 6
+        // TODO: Task 1
         title: Text("Hello world"),
         centerTitle: true,
         actions: <Widget>[

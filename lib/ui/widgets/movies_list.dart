@@ -61,7 +61,7 @@ class MoviesListViewCell extends StatelessWidget {
   }
 
   _launchMovieDetailsScreen(BuildContext context) {
-    // TODO Task 3
+    // TODO: Task 3
   }
 }
 
@@ -74,7 +74,7 @@ class MovieCoverImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Task 3
+    // TODO: Task 4
     return Container(color: Colors.blue);
   }
 }

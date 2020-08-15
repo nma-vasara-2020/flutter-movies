@@ -58,7 +58,7 @@ class MovieDetailsPage extends StatelessWidget {
   }
 
   _shareMovie() {
-    // TODO Task 8
+    // TODO: Task 7
   }
 }
 
@@ -117,11 +117,11 @@ class MovieDetailsInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Task 7
+    // TODO Task 8
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
-        child: Text("TODO Task 7"),
+        child: Text("TODO Task 8"),
       ),
     );
   }
@@ -163,10 +163,13 @@ class MovieActorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Task 9
     return SliverToBoxAdapter(
         child: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Center(child: Text("TODO 10")),
+      child: Center(
+        child: Text("TODO 9"),
+      ),
     ));
   }
 }
