@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/api/movies_api_service.dart';
-import 'package:movies/models/actor.dart';
 import 'package:movies/models/movie.dart';
-import 'package:share/share.dart';
 
 import 'widgets/error_indicator.dart';
 import 'widgets/loading_indicator.dart';
@@ -59,7 +57,7 @@ class MovieDetailsPage extends StatelessWidget {
   }
 
   _shareMovie() {
-    Share.share('${movie.title} ${movie.webUrl}');
+    // TODO: Task 7
   }
 }
 
@@ -118,48 +116,11 @@ class MovieDetailsInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Task 8
     return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      "Genres: " + movie.genres.map((g) => g.name).join(' / '),
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                  Text(
-                    "Release date: ${movie.releaseDate}",
-                    style: TextStyle(fontSize: 16),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 4.0),
-              child: Icon(
-                Icons.stars,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Text(
-                movie.voteAverage.toString(),
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ]),
-        ],
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Text("TODO Task 8"),
       ),
     );
   }
@@ -201,41 +162,14 @@ class MovieActorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: MoviesApiService().getMovieActors(movieId),
-      builder: (BuildContext context, AsyncSnapshot<List<Actor>> snapshot) {
-        if (snapshot.hasError) {
-          return SliverToBoxAdapter(
-            child: ErrorIndicator(error: snapshot.error),
-          );
-        } else if (snapshot.hasData) {
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final actor = snapshot.data[index];
-                return ListTile(
-                  title: Text(actor.name),
-                  subtitle: Text(actor.character),
-                  leading: actor.profileUrl != null
-                      ? AspectRatio(
-                          aspectRatio: 1,
-                          child: Image.network(
-                            actor.profileUrl,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      : Image.asset("assets/person.jpg"),
-                );
-              },
-              childCount: snapshot.data.length,
-            ),
-          );
-        }
-        return SliverToBoxAdapter(
-          child: LoadingIndicator(),
-        );
-      },
-    );
+    // TODO: Task 9
+    return SliverToBoxAdapter(
+        child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Text("TODO 9"),
+      ),
+    ));
   }
 }
 
