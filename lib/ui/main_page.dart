@@ -3,7 +3,7 @@ import 'package:movies/routes.dart';
 
 import 'tabs/movies_in_theater_tab.dart';
 import 'tabs/popular_movies_tab.dart';
-import 'tabs/calendar_tab.dart';
+import 'tabs/discover_movies_tab.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -37,16 +37,16 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.calendar_today),
-            title: Text('Programėlė'),
+            icon: new Icon(Icons.explore),
+            title: Text('DISCOVER'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.music_note),
-            title: Text('Dainos'),
+            icon: new Icon(Icons.movie),
+            title: Text('POPULAR'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.contacts),
-            title: Text('Kontaktai'),
+            icon: new Icon(Icons.local_movies),
+            title: Text('IN THEATERS'),
           ),
         ],
       ),
@@ -56,11 +56,11 @@ class _MainPageState extends State<MainPage> {
   String getTabText() {
     switch (_currentIndex) {
       case 0:
-        return "Programėlė";
+        return "Discover movies";
       case 1:
-        return "Dainos";
+        return "Popular movies";
       case 2:
-        return "Kontaktai";
+        return "Movies in theatres";
       default:
         throw ArgumentError("Tab text with index $_currentIndex doesn't exist");
     }
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
   Widget getTabBody() {
     switch (_currentIndex) {
       case 0:
-        return CalendarTab();
+        return DiscoverMoviesTab();
       case 1:
         return PopularMoviesTab();
       case 2:

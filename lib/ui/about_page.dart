@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Apie NMA"),
+        title: Text("About NMA"),
       ),
       body: Container(child: AboutPageBody()),
     );
