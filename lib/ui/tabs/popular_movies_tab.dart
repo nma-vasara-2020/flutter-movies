@@ -16,7 +16,7 @@ class PopularMoviesTab extends StatelessWidget {
             return ErrorIndicator(error: snapshot.error);
           } else if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {
-            return MoviesListView(movies: snapshot.data);
+            return Text("popular movies tabab");
           }
 
           return LoadingIndicator();

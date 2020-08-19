@@ -5,12 +5,11 @@ import 'package:movies/ui/widgets/error_indicator.dart';
 import 'package:movies/ui/widgets/loading_indicator.dart';
 import 'package:movies/ui/widgets/movies_list.dart';
 
-
 class MoviesInTheaterTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FutureBuilder(
+        /*child: FutureBuilder(
         future: MoviesApiService().getCurrentPlayingMovies(),
         builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
           if (snapshot.hasError) {
@@ -22,7 +21,7 @@ class MoviesInTheaterTab extends StatelessWidget {
 
           return LoadingIndicator();
         },
-      ),
-    );
+      ),*/
+        );
   }
 }

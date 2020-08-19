@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:movies/ui/tabs/calendar_tab.dart';
 
 import 'models/movie.dart';
 import 'ui/about_page.dart';
 import 'ui/main_page.dart';
-import 'ui/movie_details_page.dart';
+import 'ui/event_details_page.dart';
 
 class Routes {
   static const ROUTE_MAIN = "main";
   static const ROUTE_ABOUT = "about";
-  static const ROUTE_MOVIE_DETAILS = "movie_details";
+  static const ROUTE_EVENT_DETAILS = "event_details";
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -20,12 +21,12 @@ class Routes {
         return MaterialPageRoute(builder: (context) {
           return AboutPage();
         });
-      case ROUTE_MOVIE_DETAILS:
-        final Movie movie = settings.arguments;
+      case ROUTE_EVENT_DETAILS:
+        final Event event = settings.arguments;
 
         return MaterialPageRoute(builder: (context) {
-          return MovieDetailsPage(
-            movie: movie,
+          return EventDetailsPage(
+            event: event,
           );
         });
       default:
